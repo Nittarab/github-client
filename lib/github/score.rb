@@ -1,9 +1,9 @@
 # frozen_string_literal: true
+
 module Github
   #
   # The score class is used to calculate the score of a user base on the public events
   class Score
-
     attr_reader :user_name
 
     def initialize(user_name:)
@@ -30,13 +30,12 @@ module Github
 
     # @param [Hash] event
     def event_type(event)
-      event.first["type"].strip
+      event.first['type'].strip
     end
 
     # @param [String] type the event_type
     def score_by_type(type)
       type == 'IssueCommentEvent' ? 2 : 1
     end
-
   end
 end

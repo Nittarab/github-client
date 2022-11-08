@@ -8,6 +8,7 @@ loader.push_dir File.join(__dir__)
 loader.tag = 'service_bus'
 loader.setup
 
+# The Github module define by de
 module Github
   # Error class to raise client errors
   Error = Class.new(StandardError)

@@ -3,9 +3,8 @@
 module Github
   # Configuration class for the Github client
   class Configuration
-
-    attr_accessor :endpoint,
-                  :proxy_host,
+    attr_reader :endpoint
+    attr_accessor :proxy_host,
                   :proxy_port,
                   :logger,
                   :debug
