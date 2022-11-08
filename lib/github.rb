@@ -1,3 +1,13 @@
+# frozen_string_literal: true
+
+require 'zeitwerk'
+
+# @note I have added a tag to it's easier to auto-reload if used with other Zeitwerk loader
+loader = Zeitwerk::Loader.new
+loader.push_dir File.join(__dir__)
+loader.tag = 'service_bus'
+loader.setup
+
 module Github
   # Error class to raise client errors
   Error = Class.new(StandardError)
