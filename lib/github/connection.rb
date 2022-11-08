@@ -29,7 +29,7 @@ module Github
     #
     # @return [Hash] parsed JSON response
     #
-    def get(path:, request_id:, params: nil)
+    def get(path:, params: nil)
       params = JSON[params] if params
       url = @connection.build_url(path, params)
       json_request(method: :get, url: url).body
@@ -43,7 +43,7 @@ module Github
     #
     # @return [Hash] parsed JSON response
     #
-    def post(path:, request_id:, data: nil)
+    def post(path:, data: nil)
       data = JSON[data] if data
       json_request(method: :post, url: path, data: data).body
     end
