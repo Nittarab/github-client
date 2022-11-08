@@ -12,6 +12,8 @@ module Github
     # @param [Github::Configuration] configuration Github configuration object
     #
     def initialize(configuration)
+      # TODO: Remove endpoint duplication once https://github.com/lostisland/faraday/issues/1349 is fixed
+      url = configuration.endpoint.dup
       @configuration = configuration
       @connection = Faraday.new(url: url, proxy: configuration.proxy).tap do |connection|
         connection.url_prefix = url

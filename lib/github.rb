@@ -31,7 +31,7 @@ module Github
   def self.configure(endpoint:, **options)
     self.configuration ||= Github::Configuration.new(endpoint: endpoint, **options)
     yield(configuration) if block_given?
-    self
+    configuration
   end
 
   # Creates a client with the global configuration

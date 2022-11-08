@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'debug'
+
 module Github
   #
   # The score class is used to calculate the score of a user base on the public events
@@ -12,7 +14,7 @@ module Github
 
     # @return [Integer] the calculated store
     def event_score
-      calculate_score(Github.get_events(user_name: user_name))
+      calculate_score(Github.client.get_events(user_name: user_name))
     end
 
     private
@@ -22,7 +24,8 @@ module Github
     # @note you can find the events object structure here
     #       "https://docs.github.com/en/developers/webhooks-and-events/events/github-event-types"
     def calculate_score(events)
-      events.inject(0) do |result, e|
+      grouped = events.group_by { |h| h['type'] }.values
+      grouped.inject(0) do |result, e|
         events_score = score_by_type(event_type(e)) * e.count
         result + events_score
       end

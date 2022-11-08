@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'logger'
+require 'uri'
+
 module Github
   # Configuration class for the Github client
   class Configuration
@@ -38,7 +41,7 @@ module Github
     # @raise [ArgumentError] if the value is blank
     #
     def endpoint=(value)
-      raise ArgumentError, 'endpoint is blank' if value.blank?
+      raise ArgumentError, 'endpoint is not a Uri' unless value =~ URI::DEFAULT_PARSER.make_regexp
 
       @endpoint = URI(value.to_s).freeze
     end
@@ -48,7 +51,7 @@ module Github
     # @return [String|nil] proxy connection string, or nil if no proxy set.
     #
     def proxy
-      return unless proxy_host.present?
+      return unless proxy_host
 
       [proxy_host, proxy_port].compact.join(':')
     end
