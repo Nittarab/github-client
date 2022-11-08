@@ -3,7 +3,7 @@
 require 'faraday'
 
 module Github
-  #  The connection Class used by the Client to make call
+  #  The connection Class used by the Client to handle the network connection
   class Connection
     attr_reader :configuration
 

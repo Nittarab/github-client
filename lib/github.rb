@@ -33,7 +33,6 @@ module Github
     self
   end
 
-  #
   # Creates a client with the global configuration
   #
   # @raise [ArgumentError] if configuration is not set
