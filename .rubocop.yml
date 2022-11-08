@@ -1,13 +1,13 @@
 AllCops:
   TargetRubyVersion: 2.6
+  NewCops: enable
 
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: double_quotes
+require:
+  - 'rubocop-rspec'
 
-Style/StringLiteralsInInterpolation:
-  Enabled: true
-  EnforcedStyle: double_quotes
 
 Layout/LineLength:
   Max: 120
+
+Gemspec/RequireMFA:
+  Enabled: false
