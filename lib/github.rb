@@ -11,7 +11,6 @@ loader.setup
 module Github
   # Error class to raise client errors
   Error = Class.new(StandardError)
-  AuthenticationError = Class.new(Error)
 
   # @return [Github::Configuration] Configuration singleton
   def self.configuration
