@@ -4,9 +4,15 @@ module Github
   AuthenticationError = Class.new(Error)
 
   # @return [Github::Configuration] Configuration singleton
-  mattr_accessor :configuration
+  def self.configuration
+    @configuration
+  end
 
-  #
+  # @param [Github::Configuration]
+  def self.configuration=(configuration)
+    @configuration = configuration
+  end
+
   # Configures  globally
   #
   # @yields [Github::Configuration] configuration object
