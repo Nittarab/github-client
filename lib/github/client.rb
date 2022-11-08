@@ -21,6 +21,11 @@ module Github
     end
 
 
+    def get_events(user_name:)
+      path = "users/#{user_name}/events/public"
+      @connection.get(path: path)
+    end
+
 
   end
 end
